@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail - Trend Fusion</title>
+  
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <style>
+    /* Basic Page Setup */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      margin: 0;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Back Link */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Product Detail Layout */
+    .product-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .product-detail {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .detail-image-wrap {
+      width: 100%;
+      height: 400px;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .detail-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .detail-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tag {
+      align-self: flex-start;
+      background-color: #e0e7ff;
+      color: #4338ca;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0 0 12px 0;
+      color: #0f172a;
+    }
+
+    .detail-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 0 0 12px 0;
+      color: #1e293b;
+    }
+
+    .detail-list {
+      margin: 0 0 24px 0;
+      padding-left: 20px;
+      color: #334155;
+    }
+
+    .detail-list li {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    /* WhatsApp Button */
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .whatsapp-btn {
+      background-color: #25d366;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebc57;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 16px;
+    }
+
+    code {
+      background-color: #f1f5f9;
+      padding: 2px 4px;
+      border-radius: 4px;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="productDetail" class="container">
+    
+    <!-- Back Button -->
+    <a class="back-link" href="products.html">← Back to Products</a>
+
+    <!-- Render only when product is found/loaded -->
+    <div v-if="product" class="product-detail">
+      
+      <!-- Left: Image -->
+      <div class="detail-image-wrap">
+        <img :src="product.image" :alt="product.name">
+      </div>
+
+      <!-- Right: Details -->
+      <div class="detail-info">
+        <span class="tag">{{ product.category }}</span>
+        <h1>{{ product.name }}</h1>
+        <div class="detail-price">{{ product.price }}</div>
+        <p class="lead">{{ product.description }}</p>
+
+        <h3>Product Details</h3>
+        <ul class="detail-list">
+          <li v-for="(item, index) in product.details" :key="index">
+            {{ item }}
+          </li>
+        </ul>
+
+        <!-- Dynamic WhatsApp Link -->
+        <a class="btn whatsapp-btn" :href="whatsappUrl" target="_blank" rel="noopener">
+          Buy / Enquire on WhatsApp
+        </a>
+
+       
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          phone: "919846124945",
+          productId: null,
+          product: null,
+          // Shared product catalog data
+          products: [
+            {
+              id: 1,
+              name: "Cloth Tote Bag",
+              category: "tote",
+              price: "₹360",
+              image: "images/products/product-01.jpg",
+              description: "Cloth tote bag with double handle. Premium quality cloth, spacious and durable, with a practical everyday design.",
+              details: ["Premium quality cloth", "Spacious & durable", "Eco-friendly choice", "Double handle for extra comfort"]
+            },
+            {
+              id: 2,
+              name: "Small Handbag",
+              category: "handbag",
+              price: "₹270",
+              image: "images/products/product-02.jpg",
+              description: "Compact handbag with an adjustable-length handle, secure closure and lightweight everyday design.",
+              details: ["Length adjustable handle", "Durable & reliable", "Lightweight & comfortable", "Secure zipper closure", "Stylish & versatile"]
+            },
+            {
+              id: 3,
+              name: "Red Jute Bag",
+              category: "jute",
+              price: "₹230",
+              image: "images/products/product-03.jpg",
+              description: "Eco-friendly jute bag with a colourful patterned centre panel and practical everyday construction.",
+              details: ["Eco-friendly & sustainable", "Premium quality jute fabric", "Stylish & durable", "Everyday essential"]
+            },
+            {
+              id: 4,
+              name: "Travel Bag",
+              category: "travel",
+              price: "₹380",
+              image: "images/products/product-04.jpg",
+              description: "Spacious travel bag designed to be a dependable companion for short trips and journeys.",
+              details: ["Premium quality", "Spacious & durable", "Lightweight & stylish", "Made for travel"]
+            }
+            // Additional products can be placed here...
+          ]
+        };
+      },
+      computed: {
+        // Dynamic WhatsApp URL generator
+        whatsappUrl() {
+          if (!this.product) return '#';
+          const message = `Hello Trend Fusion, I am interested in the "${this.product.name}" (${this.product.price}). Please share availability and more details.`;
+          return `https://wa.me/${this.phone}?text=${encodeURIComponent(message)}`;
+        }
+      },
+      mounted() {
+        // Read URL query parameters on mount
+        const params = new URLSearchParams(window.location.search);
+        this.productId = Number(params.get("id")) || 1;
+
+        // Find product by ID or fallback to the first item
+        this.product = this.products.find(item => item.id === this.productId) || this.products[0];
+      }
+    }).mount('#productDetail');
+  </script>
+
+</body>
+</html>

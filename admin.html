@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trent Fusion - API Test Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbars for response viewer */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+
+<body class="h-full font-sans antialiased">
+    <div id="app" class="min-h-full flex flex-col">
+
+        <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700 sticky top-0 z-30 px-4 py-3">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <!-- <div class="p-2 bg-indigo-600 rounded-lg text-white">
+                        <i class="fa-solid me-1 fa-bolt text-lg"></i>
+                    </div> -->
+                    <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
+                    <div>
+                        <h1 class="text-lg font-bold text-white tracking-wide">Trent Fusion Admin</h1>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 flex items-center justify-center">
+
+            <!-- Left Column: Auth, Session, & Form Inputs -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-lg relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-indigo-400"></i> Admin Login
+                        </h2>
+                        <!-- <span
+                            :class="['px-2 py-0.5 text-xs font-semibold rounded-full border', sessionToken ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20']">
+                            {{ sessionToken ? 'Authenticated' : 'No Active Session' }}
+                        </span> -->
+                    </div>
+
+                    <!-- Login Form -->
+                    <form @submit.prevent="login" class="space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Username</label>
+                                <input type="text" v-model="loginForm.username" required
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Password</label>
+                                <input type="password" v-model="loginForm.password" required
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none">
+                            </div>
+                        </div>
+                        <button type="submit" :disabled="loading.login"
+                            class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs rounded-lg flex items-center justify-center gap-2 transition disabled:opacity-50">
+                            <i :class="['fa-solid', loading.login ? 'fa-spinner fa-spin' : 'fa-right-to-bracket']"></i>
+                            <span>Login</span>
+                        </button>
+                    </form>
+
+                 
+                    <!-- <div v-if="sessionToken" class="mt-4 pt-4 border-t border-slate-700/60 space-y-3">
+                        <div>
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Active X-Session-Token:</span>
+                                <div class="space-x-2">
+                                    <button @click="copyToken" class="text-indigo-400 hover:underline"><i
+                                            class="fa-regular fa-copy"></i> Copy</button>
+                                    <button @click="clearSession" class="text-rose-400 hover:underline"><i
+                                            class="fa-solid fa-trash"></i> Clear</button>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-slate-950 p-2 rounded text-[11px] font-mono text-emerald-400 break-all border border-slate-800">
+                                {{ sessionToken }}
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    baseUrl: 'http://127.0.0.1:8000',
+                    sessionToken: "",
+                 
+                    loading: {
+                        login: false,
+                        health: false,
+                        protected: false,
+                        fetchProducts: false,
+                        createProduct: false
+                    },
+                    loginForm: {
+                        username: 'trentfusion',
+                        password: '1234'
+                    },
+                  
+                    lastResponse: null
+                };
+            },
+            computed: {
+                formattedJson() {
+                    if (!this.lastResponse || !this.lastResponse.body) return '';
+                    try {
+                        return JSON.stringify(this.lastResponse.body, null, 2);
+                    } catch (e) {
+                        return this.lastResponse.body;
+                    }
+                }
+            },
+            methods: {
+
+                async login() {
+                    // this.loading.login = true;
+                    // try {
+                    //     const formData = new URLSearchParams();
+                    //     formData.append('username', this.loginForm.username);
+                    //     formData.append('password', this.loginForm.password);
+
+                    //     const res = await this.executeApiCall('/login', {
+                    //         method: 'POST',
+                    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    //         body: formData
+                    //     });
+
+                    //     if (res.session_token) {
+                    //         this.sessionToken = res.session_token;
+                    //         localStorage.setItem('trent_session_token', res.session_token);
+                    //     }
+                    // } catch (e) { }
+
+                    try {
+                       
+                        // FastAPI OAuth2PasswordRequestForm expects form-urlencoded body
+                        const payload = new URLSearchParams();
+                        payload.append('username', this.loginForm.username);
+                        payload.append('password', this.loginForm.password);
+
+                        const response = await axios.post(`${this.baseUrl}/login`, payload, {
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            }
+                        });
+
+                       
+                        
+                        // Extract session_token from FastAPI response JSON
+                       
+                            // Store token in LocalStorage
+                            this.sessionToken = response.data.session_token;
+                            localStorage.setItem('session_token', this.sessionToken);
+                            
+                            // Reset form fields
+                            this.loginForm.username = '';
+                            this.loginForm.password = '';
+                             this.redirectToDashboard();
+                            
+                    } catch (error) {
+                        if (error.response && error.response.data && error.response.data.detail) {
+                            this.errorMessage = error.response.data.detail;
+                            alert("error")
+                        } else {
+                            this.errorMessage = 'Failed to connect to the backend server.';
+                               alert("error")
+                        }
+                    } finally {
+                        // this.loading.login = false;
+                    }
+
+                },
+             
+                clearSession() {
+                    this.sessionToken = '';
+                    localStorage.removeItem('trent_session_token');
+                },
+
+                redirectToDashboard() {
+                    window.location.href = 'dashboard.html';
+                },
+
+            },
+            mounted() {
+                // Initial catalog load
+                const savedToken = localStorage.getItem('session_token');
+                if (savedToken) {
+                    this.sessionToken = savedToken;
+                    this.redirectToDashboard();
+                }
+              
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

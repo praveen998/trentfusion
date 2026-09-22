@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trent Fusion - API Test Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbars for response viewer */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+
+<body class="h-full font-sans antialiased">
+    <div id="app" class="min-h-full flex flex-col">
+
+        <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700 sticky top-0 z-30 px-4 py-3">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+
+                <!-- Left Side: Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <!-- <div class="p-2 bg-indigo-600 rounded-lg text-white">
+                <i class="fa-solid me-1 fa-bolt text-lg"></i>
+            </div> -->
+                    <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
+                    <div>
+                        <h1 class="text-lg font-bold text-white tracking-wide">Trent Fusion Dashboard</h1>
+                    </div>
+                </div>
+
+                <!-- Right Side: Logout Button (Only visible when authenticated) -->
+                <div class="flex items-center space-x-3">
+                    <button @click="clearSession"
+                        class="px-3.5 py-1.5 bg-rose-600/10 hover:bg-rose-600 border border-rose-500/30 hover:border-rose-600 text-rose-400 hover:text-white text-xs font-semibold rounded-lg flex items-center gap-2 transition-all duration-200 cursor-pointer">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+
+            </div>
+        </header>
+
+        <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Left Column: Auth, Session, & Form Inputs -->
+            <div class="lg:col-span-5 space-y-6">
+
+
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-lg">
+                    <h2 class="text-sm font-semibold text-slate-200 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-square-plus text-emerald-400"></i> Create Product (Protected)
+                    </h2>
+
+                    <form @submit.prevent="createProduct" class="space-y-3">
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Title *</label>
+                            <input type="text" v-model="productForm.title" required
+                                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Price ($) *</label>
+                                <input type="number" step="0.01" v-model="productForm.price" required
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Category *</label>
+                                <input type="text" v-model="productForm.category" required
+                                    placeholder="Electronics, Clothing..."
+                                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Description</label>
+                            <textarea v-model="productForm.description" rows="2"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none resize-none"></textarea>
+                        </div>
+
+                        <!-- Multi-details tag builder -->
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Details / Specifications List</label>
+                            <div class="flex gap-2 mb-2">
+                                <input type="text" v-model="detailInput" @keydown.enter.prevent="addDetail"
+                                    placeholder="Add feature spec..."
+                                    class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-1 text-xs text-white outline-none">
+                                <button type="button" @click="addDetail"
+                                    class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-xs rounded-lg text-slate-200">Add</button>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span v-for="(detail, index) in productForm.details" :key="index"
+                                    class="bg-slate-900 border border-slate-700 text-slate-300 px-2 py-0.5 rounded text-[10px] flex items-center gap-1">
+                                    {{ detail }}
+                                    <i @click="removeDetail(index)"
+                                        class="fa-solid fa-xmark hover:text-rose-400 cursor-pointer"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Image File Upload -->
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Product Image (Multipart Upload)</label>
+                            <input type="file" ref="fileInput" @change="handleFileUpload" accept="image/*"
+                                class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-700 file:text-slate-200 hover:file:bg-slate-600 cursor-pointer">
+                        </div>
+
+                        <button type="submit" :disabled="loading.createProduct"
+                            class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs rounded-lg flex items-center justify-center gap-2 transition disabled:opacity-50">
+                            <i
+                                :class="['fa-solid', loading.createProduct ? 'fa-spinner fa-spin' : 'fa-cloud-arrow-up']"></i>
+                            <span>Upload & Create Product</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Product List & Live API Console -->
+            <div class="lg:col-span-7 space-y-6">
+
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-lg flex flex-col h-96">
+                    <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+                                <i class="fa-solid fa-boxes-stacked text-indigo-400"></i> Product Catalog
+                            </h2>
+                            <span class="bg-slate-700 text-slate-300 text-xs px-2 py-0.5 rounded-full font-mono">{{
+                                products.length }}</span>
+                        </div>
+
+                        <!-- Category Filter & Refresh -->
+                        <div class="flex items-center gap-2">
+                            <input type="text" v-model="categoryFilter" @keyup.enter="fetchProducts"
+                                placeholder="Filter category..."
+                                class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white outline-none w-32 focus:border-indigo-500">
+                            <button @click="fetchProducts" :disabled="loading.fetchProducts"
+                                class="p-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs transition">
+                                <i
+                                    :class="['fa-solid', loading.fetchProducts ? 'fa-spinner fa-spin' : 'fa-rotate']"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid/List -->
+                    <div class="flex-1 overflow-y-auto pr-1 space-y-2">
+                        <div v-if="products.length === 0"
+                            class="h-full flex flex-col items-center justify-center text-slate-500 text-xs">
+                            <i class="fa-solid fa-box-open text-3xl mb-2"></i>
+                            <span>No products retrieved. Click refresh or add a new product.</span>
+                        </div>
+
+                        <div v-for="prod in products" :key="prod.id"
+                            class="bg-slate-900/80 border border-slate-700/60 rounded-lg p-3 flex items-center justify-between hover:border-slate-600 transition">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <div
+                                    class="w-12 h-12 bg-slate-950 rounded border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0">
+                                    <img v-if="prod.image_url" :src="baseUrl + prod.image_url"
+                                        class="w-full h-full object-cover" @error="handleImgError">
+                                    <i v-else class="fa-solid fa-image text-slate-700 text-lg"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-2">
+                                        <h3 class="text-xs font-semibold text-white truncate">{{ prod.title }}</h3>
+                                        <span
+                                            class="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-1.5 py-0.5 text-[9px] rounded font-mono">{{
+                                            prod.category }}</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-400 font-mono mt-0.5">${{ prod.price }} | ID: {{
+                                        prod.id }}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2 ml-2">
+                                <button @click="inspectProduct(prod.id,prod)"
+                                    class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded border border-slate-700">Inspect</button>
+                                <button @click="deleteProduct(prod.id)"
+                                    class="p-1 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded border border-rose-500/20 text-xs"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 shadow-xl font-mono">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-xs font-bold text-slate-300">Product Preview</span>
+                        </div>
+                        <span
+                            class="text-[10px] font-mono text-slate-400 bg-slate-900 border border-slate-800 px-2 py-0.5 rounded">
+                            {{ selectedProduct?.id || 'NO-ID' }}
+                        </span>
+                    </div>
+
+                    <div v-if="selectedProduct" class="space-y-4 font-sans">
+                        <!-- Image Preview & Core Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                            <!-- Image Column -->
+                            <div
+                                class="md:col-span-1 bg-slate-900 border border-slate-800/80 rounded-lg overflow-hidden h-40 relative flex items-center justify-center">
+                                <img :src="baseUrl + selectedProduct?.image_url" :alt="selectedProduct?.title"
+                                    class="w-full h-full object-cover"
+                                    @error="$event.target.src='https://placehold.co/400x400/0f172a/64748b?text=No+Image'">
+                                <span
+                                    class="absolute top-2 left-2 bg-indigo-600/90 text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded">
+                                    {{ selectedProduct?.category || 'General' }}
+                                </span>
+                            </div>
+
+                            <!-- Details Column -->
+                            <div class="md:col-span-2 space-y-2 flex flex-col justify-between">
+                                <div>
+                                    <!-- Title -->
+                                    <h3 class="text-base font-bold text-white tracking-wide">
+                                        {{ selectedProduct?.title }}
+                                    </h3>
+
+                                    <!-- Description -->
+                                    <p class="text-xs text-slate-400 capitalize mt-1">
+                                        {{ selectedProduct?.description }}
+                                    </p>
+
+                                    <!-- Price -->
+                                    <div class="text-lg font-extrabold text-emerald-400 mt-2">
+                                        ₹{{ selectedProduct?.price ? selectedProduct.price.toFixed(2) : '0.00' }}
+                                    </div>
+                                </div>
+
+                                <!-- Specifications List -->
+                                <div v-if="selectedProduct?.details?.length">
+                                    <span
+                                        class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block mb-1">
+                                        Specifications:
+                                    </span>
+                                    <ul class="flex flex-wrap gap-1.5">
+                                        <li v-for="(detail, index) in selectedProduct.details" :key="index"
+                                            class="bg-slate-900 border border-slate-800 text-slate-300 text-xs px-2 py-0.5 rounded flex items-center gap-1.5 capitalize font-mono">
+                                            <i class="fa-solid fa-check text-indigo-400 text-[10px]"></i>
+                                            <span>{{ detail }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Raw JSON Response Body -->
+                        <div>
+                            <span class="text-[10px] text-slate-500 uppercase tracking-wider block mb-1 font-mono">
+                                Raw Response Body
+                            </span>
+                            <pre
+                                class="bg-slate-900 p-3 rounded text-[11px] font-mono text-indigo-300 overflow-x-auto max-h-40 border border-slate-800/80">{{ JSON.stringify(selectedProduct, null, 2) }}</pre>
+                        </div>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div v-else class="text-center py-6 text-slate-500 text-xs font-mono">
+                        <i class="fa-solid fa-box-open text-xl mb-2 block"></i>
+                        No product selected for preview
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    baseUrl: 'http://127.0.0.1:8000',
+                    sessionToken: localStorage.getItem('session_token') || '',
+                    products: [],
+                    categoryFilter: '',
+                    detailInput: '',
+                    loading: {
+                        login: false,
+                        health: false,
+                        protected: false,
+                        fetchProducts: false,
+                        createProduct: false
+                    },
+                    loginForm: {
+                        username: 'trentfusion',
+                        password: '1234'
+                    },
+                    productForm: {
+                        title: '',
+                        price: '',
+                        category: 'Electronics',
+                        description: '',
+                        details: [],
+                        image: null
+                    },
+                    lastResponse: null,
+                    selectedProduct: null
+                };
+            },
+            computed: {
+                formattedJson() {
+                    if (!this.lastResponse || !this.lastResponse.body) return '';
+                    try {
+                        return JSON.stringify(this.lastResponse.body, null, 2);
+                    } catch (e) {
+                        return this.lastResponse.body;
+                    }
+                }
+            },
+            methods: {
+                // Helper: API Fetch Handler with cURL logger
+                async executeApiCall(endpoint, options = {}) {
+                    const start = performance.now();
+                    const url = `${this.baseUrl.replace(/\/$/, '')}${endpoint}`;
+
+                    // Build cURL representation
+                    let curl = `curl -X ${options.method || 'GET'} "${url}"`;
+                    if (options.headers) {
+                        for (const [key, val] of Object.entries(options.headers)) {
+                            curl += ` -H "${key}: ${val}"`;
+                        }
+                    }
+
+                    try {
+                        const res = await fetch(url, options);
+                        const duration = Math.round(performance.now() - start);
+                        let data;
+                        const contentType = res.headers.get("content-type");
+
+                        if (contentType && contentType.includes("application/json")) {
+                            data = await res.json();
+                        } else {
+                            data = await res.text();
+                        }
+
+                        this.lastResponse = {
+                            status: `${res.status} ${res.statusText}`,
+                            ok: res.ok,
+                            time: duration,
+                            curl: curl,
+                            body: data
+                        };
+
+                        if (!res.ok) throw new Error(data.detail || 'API Request failed');
+                        return data;
+                    } catch (err) {
+                        if (!this.lastResponse) {
+                            this.lastResponse = {
+                                status: 'FETCH_ERROR',
+                                ok: false,
+                                time: 0,
+                                curl: curl,
+                                body: { error: err.message }
+                            };
+                        }
+                        throw err;
+                    }
+                },
+
+                async checkHealth() {
+                    // this.loading.health = true;
+                    // try {
+                    //     await this.executeApiCall('/health');
+                    // } catch (e) { }
+                    // this.loading.health = false;
+                },
+
+                async login() {
+
+                },
+
+                async testProtected() {
+                    // this.loading.protected = true;
+                    // try {
+                    //     await this.executeApiCall('/test/protected', {
+                    //         headers: { 'X-Session-Token': this.sessionToken }
+                    //     });
+                    // } catch (e) { }
+                    // this.loading.protected = false;
+                },
+
+                async fetchProducts() {
+
+                    try {
+                        const endpoint = this.categoryFilter
+                            ? `/api/products?category=${encodeURIComponent(this.categoryFilter)}`
+                            : '/api/products';
+                        const res = await this.executeApiCall(endpoint);
+                        this.products = res;
+
+                    } catch (e) {
+                        this.products = [];
+                    }
+
+                },
+
+                async inspectProduct(id, prod) {
+                    try {
+                        await this.executeApiCall(`/api/products/${id}`);
+                    } catch (e) { }
+
+                    this.selectedProduct = prod;
+            },
+
+                async createProduct() {
+                    this.loading.createProduct = true;
+                    try {
+                        const formData = new FormData();
+                        formData.append('title', this.productForm.title);
+                        formData.append('price', this.productForm.price);
+                        formData.append('category', this.productForm.category);
+                        if (this.productForm.description) formData.append('description', this.productForm.description);
+
+                        // Append details list
+                        this.productForm.details.forEach(d => formData.append('details', d));
+
+                        // File upload
+                        if (this.productForm.image) {
+                            formData.append('image', this.productForm.image);
+                        }
+
+                        await this.executeApiCall('/api/products', {
+                            method: 'POST',
+                            headers: {
+                                'X-Session-Token': this.sessionToken
+                            },
+                            body: formData
+                        });
+
+                        // Reset form on success
+                        this.productForm = { title: '', price: '', category: 'Electronics', description: '', details: [], image: null };
+                        if (this.$refs && this.$refs.fileInput) this.$refs.fileInput.value = '';
+                        this.fetchProducts();
+                    } catch (e) { }
+                    this.loading.createProduct = false;
+                },
+
+                async deleteProduct(id) {
+                    if (!confirm(`Are you sure you want to delete product '${id}'?`)) return;
+                    try {
+                        await this.executeApiCall(`/api/products/${id}`, { method: 'DELETE' });
+                        this.fetchProducts();
+                    } catch (e) { }
+                },
+
+                addDetail() {
+                    if (this.detailInput.trim()) {
+                        this.productForm.details.push(this.detailInput.trim());
+                        this.detailInput = '';
+                    }
+                },
+
+                removeDetail(index) {
+                    this.productForm.details.splice(index, 1);
+                },
+
+                handleFileUpload(e) {
+                    this.productForm.image = e.target.files[0] || null;
+                },
+
+                copyToken() {
+                    navigator.clipboard.writeText(this.sessionToken);
+                },
+
+                clearSession() {
+                    this.sessionToken = '';
+                    localStorage.removeItem('session_token');
+                    this.redirectToAdmin();
+                },
+
+                handleImgError(e) {
+                    e.target.style.display = 'none';
+                },
+
+                redirectToAdmin() {
+                    window.location.href = 'admin.html';
+                },
+            },
+            async mounted() {
+                const savedToken = localStorage.getItem('session_token');
+                if (savedToken) {
+                    this.sessionToken = savedToken;
+                    this.redirectToDashboard();
+
+                }
+                // Initial catalog load
+
+                this.fetchProducts();
+
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

@@ -5,177 +5,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="Product details | Trend Fusion by Lakshmi Bags"
-  >
+  <meta name="description" content="Product details | Trend Fusion by Lakshmi Bags">
 
   <title>Product Details | Trend Fusion</title>
 
   <link rel="stylesheet" href="css/style.css">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-<header class="site-header">
+  <header class="site-header">
 
-  <div class="container nav-wrap">
+    <div class="container nav-wrap">
 
-    <a class="brand" href="index.html">
+      <a class="brand" href="index.html">
 
-      <img
-        src="images/Logo.jpg"
-        alt="Trend Fusion Logo"
-      >
+        <img src="images/Logo.jpg" alt="Trend Fusion Logo">
 
-      <span class="brand-fallback">
-        TREND FUSION
-      </span>
+        <span class="brand-fallback">
+          TREND FUSION
+        </span>
 
-    </a>
-
-    <button
-      class="menu-toggle"
-      aria-label="Open navigation"
-    >
-      ☰
-    </button>
-
-    <nav class="nav" id="mainNav">
-
-      <a href="index.html">
-        Home
       </a>
 
-      <a
-        class="active"
-        href="products.html"
-      >
-        Products
-      </a>
+      <button class="menu-toggle" aria-label="Open navigation">
+        ☰
+      </button>
 
-      <a href="about.html">
-        About Us
-      </a>
+      <nav class="nav" id="mainNav">
 
-      <a href="contact.html">
-        Contact
-      </a>
+        <a href="index.html">
+          Home
+        </a>
 
-    </nav>
+        <a class="active" href="products.html">
+          Products
+        </a>
 
-  </div>
+        <a href="about.html">
+          About Us
+        </a>
 
-</header>
+        <a href="contact.html">
+          Contact
+        </a>
 
+      </nav>
 
-<main>
+    </div>
 
-  <section class="section">
-
-    <div
-      class="container"
-      id="productDetail"
-    ></div>
-
-  </section>
-
-</main>
+  </header>
 
 
-<a
-  class="whatsapp-float"
-  href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20would%20like%20to%20contact%20you."
-  target="_blank"
-  rel="noopener"
-  aria-label="Chat on WhatsApp"
-  title="Chat on WhatsApp"
->
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
+  <main>
+
+    <section class="section">
+
+      <div class="container" id="productDetail"></div>
+
+    </section>
+
+  </main>
 
 
-<footer class="site-footer">
+  <a class="whatsapp-float"
+    href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20would%20like%20to%20contact%20you."
+    target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
-  <div class="container footer-grid">
 
-    <div>
+  <footer class="site-footer">
 
-      <img
-        class="footer-logo"
-        src="images/Logo.jpg"
-        alt="Trend Fusion Logo"
-      >
+    <div class="container footer-grid">
 
-      <p>
-        Trend Fusion by Lakshmi Bags —
-        stylish, durable and practical bags.
-      </p>
+      <div>
+
+        <img class="footer-logo" src="images/Logo.jpg" alt="Trend Fusion Logo">
+
+        <p>
+          Trend Fusion by Lakshmi Bags —
+          stylish, durable and practical bags.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>Quick Links</h3>
+
+        <a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a
+          href="contact.html">Contact</a><a href="admin.html">Admin</a>
+      </div>
+
+
+      <div>
+
+        <h3>Contact</h3>
+
+        <p>98461 24945</p>
+
+        <p>79944 79719</p>
+
+        <p>Dummy Location, Kochi, Kerala</p>
+
+      </div>
 
     </div>
 
 
-    <div>
+    <div class="copyright">
 
-      <h3>Quick Links</h3>
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="products.html">
-        Products
-      </a>
-
-      <a href="about.html">
-        About Us
-      </a>
-
-      <a href="contact.html">
-        Contact
-      </a>
+      © <span id="year"></span>
+      Trend Fusion by Lakshmi Bags.
+      All rights reserved.
 
     </div>
 
-
-    <div>
-
-      <h3>Contact</h3>
-
-      <p>98461 24945</p>
-
-      <p>79944 79719</p>
-
-      <p>Dummy Location, Kochi, Kerala</p>
-
-    </div>
-
-  </div>
+  </footer>
 
 
-  <div class="copyright">
+  <!-- Product database -->
+  <script src="js/products.js"></script>
 
-    © <span id="year"></span>
-    Trend Fusion by Lakshmi Bags.
-    All rights reserved.
+  <!-- Individual product page -->
+  <script src="js/product-detail.js"></script>
 
-  </div>
-
-</footer>
-
-
-<!-- Product database -->
-<script src="js/products.js"></script>
-
-<!-- Individual product page -->
-<script src="js/product-detail.js"></script>
-
-<!-- Website functions -->
-<script src="js/script.js"></script>
+  <!-- Website functions -->
+  <script src="js/script.js"></script>
 
 </body>
 
