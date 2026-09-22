@@ -329,7 +329,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px
-}
+  }
 
 .product-card {
   background: #fff;
@@ -468,8 +468,8 @@ button {
 
 .detail-image-wrap img {
   width: 100%;
-  height: 620px;
-  object-fit: contain
+  height: auto;         /* Replaces 620px */
+  display: block;       /* Removes extra bottom spacing inline elements have */
 }
 
 .detail-info h1 {
