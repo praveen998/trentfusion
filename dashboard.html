@@ -7,6 +7,7 @@
     <title>Trent Fusion - API Test Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -90,7 +91,7 @@
                     <form @submit.prevent="createProduct" class="space-y-3">
                         <div>
                             <label class="block text-xs text-slate-400 mb-1">Title *</label>
-                            <input type="text" v-model="productForm.title" required
+                            <input type="text" v-model="productForm.title" required  placeholder="Product Name"
                                 class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none">
                         </div>
 
@@ -103,7 +104,7 @@
                             <div>
                                 <label class="block text-xs text-slate-400 mb-1">Category *</label>
                                 <input type="text" v-model="productForm.category" required
-                                    placeholder="Electronics, Clothing..."
+                                    placeholder=""
                                     class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-indigo-500 outline-none">
                             </div>
                         </div>
@@ -190,7 +191,7 @@
                             <div class="flex items-center gap-3 min-w-0">
                                 <div
                                     class="w-12 h-12 bg-slate-950 rounded border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0">
-                                    <img v-if="prod.image_url" :src="baseUrl + prod.image_url"
+                                    <img v-if="prod.image_url" :src="API_BASE_URL + prod.image_url"
                                         class="w-full h-full object-cover" @error="handleImgError">
                                     <i v-else class="fa-solid fa-image text-slate-700 text-lg"></i>
                                 </div>
@@ -237,7 +238,7 @@
                             <!-- Image Column -->
                             <div
                                 class="md:col-span-1 bg-slate-900 border border-slate-800/80 rounded-lg overflow-hidden h-40 relative flex items-center justify-center">
-                                <img :src="baseUrl + selectedProduct?.image_url" :alt="selectedProduct?.title"
+                                <img :src="API_BASE_URL + selectedProduct?.image_url" :alt="selectedProduct?.title"
                                     class="w-full h-full object-cover"
                                     @error="$event.target.src='https://placehold.co/400x400/0f172a/64748b?text=No+Image'">
                                 <span
@@ -309,7 +310,7 @@
         createApp({
             data() {
                 return {
-                    baseUrl: 'http://127.0.0.1:8000',
+                    API_BASE_URL: 'https://api.trendfusion.cc',
                     sessionToken: localStorage.getItem('session_token') || '',
                     products: [],
                     categoryFilter: '',
@@ -321,14 +322,11 @@
                         fetchProducts: false,
                         createProduct: false
                     },
-                    loginForm: {
-                        username: 'trentfusion',
-                        password: '1234'
-                    },
+
                     productForm: {
                         title: '',
                         price: '',
-                        category: 'Electronics',
+                        category: '',
                         description: '',
                         details: [],
                         image: null
@@ -351,7 +349,7 @@
                 // Helper: API Fetch Handler with cURL logger
                 async executeApiCall(endpoint, options = {}) {
                     const start = performance.now();
-                    const url = `${this.baseUrl.replace(/\/$/, '')}${endpoint}`;
+                    const url = `${this.API_BASE_URL.replace(/\/$/, '')}${endpoint}`;
 
                     // Build cURL representation
                     let curl = `curl -X ${options.method || 'GET'} "${url}"`;
@@ -397,27 +395,6 @@
                     }
                 },
 
-                async checkHealth() {
-                    // this.loading.health = true;
-                    // try {
-                    //     await this.executeApiCall('/health');
-                    // } catch (e) { }
-                    // this.loading.health = false;
-                },
-
-                async login() {
-
-                },
-
-                async testProtected() {
-                    // this.loading.protected = true;
-                    // try {
-                    //     await this.executeApiCall('/test/protected', {
-                    //         headers: { 'X-Session-Token': this.sessionToken }
-                    //     });
-                    // } catch (e) { }
-                    // this.loading.protected = false;
-                },
 
                 async fetchProducts() {
 
@@ -521,12 +498,9 @@
                 if (savedToken) {
                     this.sessionToken = savedToken;
                     this.redirectToDashboard();
-
                 }
                 // Initial catalog load
-
                 this.fetchProducts();
-
             }
         }).mount('#app');
     </script>

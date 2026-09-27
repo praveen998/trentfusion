@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Product details | Trend Fusion by Lakshmi Bags">
+
+  <title>Product Details | Trend Fusion</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <div class="container nav-wrap">
+
+      <a class="brand" href="index.html">
+
+        <img src="images/Logo.jpg" alt="Trend Fusion Logo">
+
+        <span class="brand-fallback">
+          TREND FUSION
+        </span>
+
+      </a>
+
+      <button class="menu-toggle" aria-label="Open navigation">
+        ☰
+      </button>
+
+      <nav class="nav" id="mainNav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a class="active" href="products.html">
+          Products
+        </a>
+
+        <a href="about.html">
+          About Us
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <section class="section">
+
+      <!-- Vue Mount Container -->
+      <div class="container" id="productDetail">
+
+        <template v-if="product">
+          <a class="back-link" href="products.html">← Back to Products</a>
+
+          <div class="product-detail">
+            <div class="detail-image-wrap">
+              <img :src="API_BASE_URL + product.image_url" :alt="product.title">
+            </div>
+
+            <div class="detail-info">
+              <span class="tag">{{ product.category }}</span>
+              <h1>{{ product.name }}</h1>
+              <div class="detail-price">{{ product.price }}</div>
+              <p class="lead">{{ product.description }}</p>
+
+              <h3>Product Details</h3>
+              <ul class="detail-list">
+                <li v-for="(item, index) in product.details" :key="index">
+                  {{ item }}
+                </li>
+              </ul>
+
+              <a class="btn whatsapp-btn" :href="whatsappUrl" target="_blank" rel="noopener">
+                Buy / Enquire on WhatsApp
+              </a>
+
+              <p class="small-note">
+               
+              </p>
+            </div>
+          </div>
+        </template>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <a class="whatsapp-float"
+    href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20would%20like%20to%20contact%20you."
+    target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-grid">
+
+      <div>
+
+        <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
+
+        <p>
+          Trend Fusion by Lakshmi Bags —
+          stylish, durable and practical bags.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>Quick Links</h3>
+
+        <a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a
+          href="contact.html">Contact</a><a href="admin.html">Admin</a>
+      </div>
+
+
+      <div>
+
+        <h3>Contact</h3>
+
+        <p>98461 24945</p>
+
+        <p>79944 79719</p>
+
+        <p>Dummy Location, Kochi, Kerala</p>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      © <span id="year"></span>
+      Trend Fusion by Lakshmi Bags.
+      All rights reserved.
+
+    </div>
+
+  </footer>
+
+
+  <!-- Website functions -->
+  <script src="js/script.js"></script>
+
+  <!-- Vue 3 Instance -->
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          API_BASE_URL: 'https://api.trendfusion.cc',
+          phone: "919846124945",
+          product: null,
+          // Static fallback dataset (will be replaced by cached_products or products array if available)
+          products: [
+            {
+              id: 1,
+              name: "Cloth Tote Bag",
+              category: "tote",
+              price: "₹360",
+              image: "images/products/product-01.jpg",
+              description: "Cloth tote bag with double handle. Premium quality cloth, spacious and durable, with a practical everyday design.",
+              details: [
+                "Premium quality cloth",
+                "Spacious & durable",
+                "Eco-friendly choice",
+                "Double handle for extra comfort"
+              ]
+            }
+          ]
+        };
+      },
+
+      computed: {
+        // Generates the pre-filled WhatsApp enquiry link dynamically
+        whatsappUrl() {
+          if (!this.product) return '#';
+          const message = `Hello Trend Fusion, I am interested in the "${this.product.name}" (${this.product.price}). Please share availability and more details.`;
+          return `https://wa.me/${this.phone}?text=${encodeURIComponent(message)}`;
+        }
+      },
+
+      methods: {
+        loadProductData() {
+          const params = new URLSearchParams(window.location.search);
+          const id = Number(params.get("id")) || 1;
+
+          let sourceProducts = [];
+
+          // 1. Try reading cached API products from LocalStorage
+          const cached = localStorage.getItem('cached_products');
+          if (cached) {
+            try {
+              sourceProducts = JSON.parse(cached);
+            } catch (e) {
+              console.error('Error parsing cached_products:', e);
+            }
+          }
+
+          // 2. Fall back to global window.products (from js/products.js) or local fallback array
+          if (!sourceProducts.length) {
+            sourceProducts = (typeof window.products !== 'undefined' && window.products.length)
+              ? window.products
+              : this.products;
+          }
+          // 3. Find target product or default to the first product
+          this.product = sourceProducts.find(item => Number(item.id) === id) || sourceProducts[0];
+        }
+      },
+
+      mounted() {
+        this.loadProductData();
+        // Footer year script
+        const yearEl = document.getElementById('year');
+        if (yearEl) {
+          yearEl.textContent = new Date().getFullYear();
+        }
+
+        const savedProduct = localStorage.getItem('selected_product');
+        if (savedProduct) {
+          this.product = JSON.parse(savedProduct);
+          console.log(this.product);
+        }
+      }
+    }).mount('#productDetail');
+  </script>
+
+</body>
+
+</html>

@@ -380,10 +380,11 @@ button {
 }
 
 .card-bottom {
+  margin-top: auto;
+  padding-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px
 }
 
 .price {

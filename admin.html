@@ -132,7 +132,7 @@
         createApp({
             data() {
                 return {
-                    baseUrl: 'http://127.0.0.1:8000',
+                    API_BASE_URL: 'https://api.trendfusion.cc',
                     sessionToken: "",
                  
                     loading: {
@@ -143,8 +143,8 @@
                         createProduct: false
                     },
                     loginForm: {
-                        username: 'trentfusion',
-                        password: '1234'
+                        username: '',
+                        password: ''
                     },
                   
                     lastResponse: null
@@ -188,7 +188,7 @@
                         payload.append('username', this.loginForm.username);
                         payload.append('password', this.loginForm.password);
 
-                        const response = await axios.post(`${this.baseUrl}/login`, payload, {
+                        const response = await axios.post(`${this.API_BASE_URL}/login`, payload, {
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             }
