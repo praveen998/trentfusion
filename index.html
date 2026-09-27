@@ -1,283 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Trend Fusion by Lakshmi Bags - stylish, durable and practical bags.">
   <title>Trend Fusion | Lakshmi Bags</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <!-- Vue 3 CDN -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
 </head>
-
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">
-        <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
-        <span class="brand-fallback">TREND FUSION</span>
-      </a>
-      <button class="menu-toggle" aria-label="Open navigation">☰</button>
-      <nav class="nav" id="mainNav">
-        <a class="active" href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="images/Logo.jpg" alt="Company Logo"  style="height: 70px; width: auto; display: block;">
+      <span class="brand-fallback">TREND FUSION</span>
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation">☰</button>
+    <nav class="nav" id="mainNav">
+      <a class="active" href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="carousel" id="heroCarousel">
+      <div class="slide active"><img src="images/carousel/cloth-tote.jpg" alt="Cloth tote bag"></div>
+      <div class="slide"><img src="images/carousel/small-handbag.jpg" alt="Small handbag"></div>
+      <div class="slide"><img src="images/carousel/jute-red.jpg" alt="Red jute bag"></div>
+      <div class="slide"><img src="images/carousel/travel-bag.jpg" alt="Travel bag"></div>
+      <div class="slide"><img src="images/carousel/jute-blue.jpg" alt="Blue jute bag"></div>
+      <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
+      <button class="carousel-btn next" aria-label="Next slide">›</button>
+      <div class="dots" id="carouselDots"></div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="carousel" id="heroCarousel">
-        <div class="slide active"><img src="images/carousel/cloth-tote.jpg" alt="Cloth tote bag"></div>
-        <div class="slide"><img src="images/carousel/small-handbag.jpg" alt="Small handbag"></div>
-        <div class="slide"><img src="images/carousel/jute-red.jpg" alt="Red jute bag"></div>
-        <div class="slide"><img src="images/carousel/travel-bag.jpg" alt="Travel bag"></div>
-        <div class="slide"><img src="images/carousel/jute-blue.jpg" alt="Blue jute bag"></div>
-        <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
-        <button class="carousel-btn next" aria-label="Next slide">›</button>
-        <div class="dots" id="carouselDots"></div>
-      </div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content container">
-        <p class="eyebrow">TREND FUSION • BY LAKSHMI BAGS</p>
-        <h1>Carry Your Style.<br>Carry Your Story.</h1>
-        <p>Discover stylish, practical and sustainable bags made for everyday life and every journey.</p>
-        <div class="hero-actions">
-          <a class="btn" href="products.html">Explore Collection</a>
-          <a class="btn btn-outline"
-            href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20would%20like%20to%20know%20more%20about%20your%20bags."
-            target="_blank" rel="noopener">WhatsApp Us</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section intro">
-      <div class="container two-column">
-        <div>
-          <p class="eyebrow">WELCOME TO TREND FUSION</p>
-          <h2>Bags that combine style, comfort and everyday usefulness.</h2>
-          <p>Trend Fusion by Lakshmi Bags is presented here as a clean static company website. Replace the placeholder
-            company story and contact details with the customer's final information.</p>
-          <a class="text-link" href="about.html">Learn more about us →</a>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section soft">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">FEATURED COLLECTION</p>
-          <h2>Popular Bags</h2>
-
-        </div>
-        <!-- <div class="product-grid" id="featuredProducts"></div> -->
-
-
-
-
-
-
-
-
-
-
-        <div id="app" class="container">
-          <h2 class="section-title">Featured Products</h2>
-          <div class="product-grid">
-            <article v-for="product in featuredProducts" :key="'featured-' + product.id" class="product-card">
-              <a  class="product-image-link" @click="selectProduct(product)">
-                <img :src="API_BASE_URL + product.image_url" :alt="product.name" loading="lazy">
-              </a>
-
-              <div class="product-info flex flex-col h-full justify-between">
-                <div>
-                  <span class="tag">{{ product.category }}</span>
-                  <h3>{{ product.title || product.name }}</h3>
-                  <p>{{ product.description }}</p>
-                </div>
-
-                <!-- mt-auto pushes this block to the very bottom -->
-                <div class="card-bottom mt-auto pt-3 flex items-center justify-between">
-                  <strong class="price">{{ formatPrice(product.price) }}</strong>
-                  <a class="btn btn-small" @click="selectProduct(product)">
-                    View Details
-                  </a>
-                </div>
-              </div>
-
-            </article>
-          </div>
-
-        </div>
-
-
-
-
-      </div>
-    </section>
-
-    <section class="dark-cta">
-      <div class="container cta-inner">
-        <div>
-          <p class="eyebrow">ORDER DIRECTLY</p>
-          <h2>Interested in a bag?</h2>
-          <p>Click WhatsApp and ask about price, availability and colours.</p>
-        </div>
-        <a class="btn btn-light"
-          href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20am%20interested%20in%20your%20bags."
-          target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
-    </section>
-  </main>
-
-  <a class="whatsapp-float"
-    href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20am%20interested%20in%20your%20bags."
-    target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
-        <p>Trend Fusion by Lakshmi Bags — stylish, durable and practical bags.</p>
-      </div>
-      <div>
-        <h3>Quick Links</h3>
-        <a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a
-          href="contact.html">Contact</a><a href="admin.html">Admin</a>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>98461 24945</p>
-        <p>79944 79719</p>
-        <p>Dummy Location, Kochi, Kerala</p>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <p class="eyebrow">TREND FUSION • BY LAKSHMI BAGS</p>
+      <h1>Carry Your Style.<br>Carry Your Story.</h1>
+      <p>Discover stylish, practical and sustainable bags made for everyday life and every journey.</p>
+      <div class="hero-actions">
+        <a class="btn" href="products.html">Explore Collection</a>
+        <a class="btn btn-outline" href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20would%20like%20to%20know%20more%20about%20your%20bags." target="_blank" rel="noopener">WhatsApp Us</a>
       </div>
     </div>
-    <div class="copyright">© <span id="year"></span> Trend Fusion by Lakshmi Bags. All rights reserved.</div>
-  </footer>
-  <!-- <script src="js/products.js"></script> -->
+  </section>
 
+  <section class="section intro">
+    <div class="container two-column">
+      <div>
+        <p class="eyebrow">WELCOME TO TREND FUSION</p>
+        <h2>Bags that combine style, comfort and everyday usefulness.</h2>
+        <p>Trend Fusion by Lakshmi Bags is presented here as a clean static company website. Replace the placeholder company story and contact details with the customer's final information.</p>
+        <a class="text-link" href="about.html">Learn more about us →</a>
+      </div>
+      
+    </div>
+  </section>
 
+  <section class="section soft">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">FEATURED COLLECTION</p>
+        <h2>Popular Bags</h2>
+        
+      </div>
+      <div class="product-grid" id="featuredProducts"></div>
+    </div>
+  </section>
 
+  <section class="dark-cta">
+    <div class="container cta-inner">
+      <div>
+        <p class="eyebrow">ORDER DIRECTLY</p>
+        <h2>Interested in a bag?</h2>
+        <p>Click WhatsApp and ask about price, availability and colours.</p>
+      </div>
+      <a class="btn btn-light" href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20am%20interested%20in%20your%20bags." target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </section>
+</main>
 
-
-
-  <script>
-    const { createApp } = Vue;
-
-    createApp({
-      data() {
-        return {
-          API_BASE_URL: 'https://api.trendfusion.cc',
-          currentCategory: 'all',
-          errorMessage: '',
-          loading: false,
-          products: [],
-          productitems: [],
-        };
-      },
-      computed: {
-        categories() {
-          const cats = (this.productitems.length ? this.productitems : this.products).map(p => p.category);
-          return ['all', ...new Set(cats)];
-        },
-        filteredProducts() {
-          const activeList = this.productitems.length ? this.productitems : this.products;
-          if (this.currentCategory === 'all') {
-            return activeList;
-          }
-          return activeList.filter(p => p.category === this.currentCategory);
-        },
-        featuredProducts() {
-          const list = this.productitems.length ? this.productitems : this.products;
-          return list.slice(0, 4);
-        }
-      },
-      methods: {
-        async fetchProducts() {
-          this.loading = true;
-          this.errorMessage = '';
-          try {
-            // FIX: Referenced API_BASE_URL via 'this.'
-            const response = await axios.get(`${this.API_BASE_URL}/api/products`);
-
-            this.productitems = response.data;
-            localStorage.setItem('cached_products', JSON.stringify(this.productitems));
-          } catch (error) {
-            if (error.response && error.response.data && error.response.data.detail) {
-              this.errorMessage = error.response.data.detail;
-            } else {
-              this.errorMessage = 'Failed to load products from server. Showing cached/default items.';
-            }
-            console.error('Error fetching products:', error);
-
-            // Fallback to cache if request fails
-            const productlist = localStorage.getItem('cached_products');
-            if (productlist) {
-              try {
-                this.productitems = JSON.parse(productlist);
-              } catch (e) {
-                console.error('Cache parsing error:', e);
-              }
-            }
-          } finally {
-            this.loading = false;
-          }
-        },
-
-        // Helper to resolve images whether from backend or local assets
-        getProductImage(product) {
-          if (product.image_url) {
-            return product.image_url.startsWith('http')
-              ? product.image_url
-              : `${this.API_BASE_URL}${product.image_url}`;
-          }
-          return product.image_url || 'images/products/product-01.jpg';
-        },
-
-        // Helper to format price correctly
-        formatPrice(price) {
-          if (typeof price === 'number') {
-            return `₹${price.toFixed(2)}`;
-          }
-          return price || '₹0';
-        },
-
-        selectProduct(product) {
-          try {
-            localStorage.setItem('selected_product', JSON.stringify(product));
-            window.location.href = `productdetail.html`;
-          } catch (error) {
-            console.error('Failed to save product to localStorage:', error);
-          }
-        },
-
-        clearSelectedProduct() {
-          localStorage.removeItem('selected_product');
-        }
-
-      },
-      async mounted() {
-        await this.fetchProducts();
-        this.clearSelectedProduct();
-      }
-
-    }).mount('#app');
-
-    // Footer Copyright Year Script
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-
-
-  <script src="js/script.js"></script>
+<a
+  class="whatsapp-float"
+  href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20am%20interested%20in%20your%20bags."
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat on WhatsApp"
+  title="Chat on WhatsApp"
+>
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <img class="footer-logo" src="images/Logo.jpg" alt="Company Logo">
+      <p>Trend Fusion by Lakshmi Bags — stylish, durable and practical bags.</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>98461 24945</p><p>79944 79719</p><p>Dummy Location, Kochi, Kerala</p>
+    </div>
+  </div>
+  <div class="copyright">© <span id="year"></span> Trend Fusion by Lakshmi Bags. All rights reserved.</div>
+</footer>
+<script src="js/products.js"></script>
+<script src="js/script.js"></script>
 </body>
-
 </html>
