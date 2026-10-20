@@ -445,7 +445,7 @@
                         });
 
                         // Reset form on success
-                        this.productForm = { title: '', price: '', category: 'Electronics', description: '', details: [], image: null };
+                        this.productForm = { title: this.productForm.title, price: this.productForm.price, category: this.productForm.category, description: this.productForm.description, details: this.productForm.details, image: null };
                         if (this.$refs && this.$refs.fileInput) this.$refs.fileInput.value = '';
                         this.fetchProducts();
                     } catch (e) { }
