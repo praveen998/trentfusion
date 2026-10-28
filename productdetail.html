@@ -5,67 +5,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Product details | Trend Fusion by Lakshmi Bags">
+  <!-- Primary SEO Meta Tags -->
+  <title>Product Details | Trend Fusion by Lakshmi Bags Thrissur</title>
+  <meta name="description" content="View product details, prices, specifications, and WhatsApp order options for handcrafted tote bags, handbags, and jute bags by Lakshmi Bags in Thrissur, Kerala.">
+  <meta name="keywords" content="Lakshmi Bags product details, buy tote bags Thrissur, handcrafted jute bag price, buy handbags Kerala, Trend Fusion bags">
+  <meta name="author" content="Trend Fusion by Lakshmi Bags">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://trendfusion.cc/productdetail.html">
 
-  <title>Product Details | Trend Fusion</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/Logo.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Logo.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/Logo.jpg">
 
+  <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://trendfusion.cc/productdetail.html">
+  <meta property="og:title" id="og-title" content="Product Details | Trend Fusion by Lakshmi Bags">
+  <meta property="og:description" id="og-desc" content="Explore handcrafted, high-quality bags by Lakshmi Bags. Inquire and purchase directly via WhatsApp.">
+  <meta property="og:image" id="og-image" content="https://trendfusion.cc/images/Logo.jpg">
+  <meta property="og:site_name" content="Trend Fusion by Lakshmi Bags">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://trendfusion.cc/productdetail.html">
+  <meta name="twitter:title" id="twitter-title" content="Product Details | Trend Fusion by Lakshmi Bags">
+  <meta name="twitter:description" id="twitter-desc" content="Explore handcrafted, high-quality bags by Lakshmi Bags. Inquire and purchase directly via WhatsApp.">
+  <meta name="twitter:image" id="twitter-image" content="https://trendfusion.cc/images/Logo.jpg">
+
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json" id="schema-json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ItemPage",
+        "@id": "https://trendfusion.cc/productdetail.html/#webpage",
+        "url": "https://trendfusion.cc/productdetail.html",
+        "name": "Product Details | Trend Fusion by Lakshmi Bags"
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://trendfusion.cc/#organization",
+        "name": "Trend Fusion by Lakshmi Bags",
+        "url": "https://trendfusion.cc/",
+        "logo": "https://trendfusion.cc/images/Logo.jpg",
+        "image": "https://trendfusion.cc/images/Logo.jpg",
+        "telephone": ["+919846124945", "+917994479719"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Thalore",
+          "addressRegion": "Thrissur",
+          "addressCountry": "IN",
+          "addressRegion": "Kerala"
+        },
+        "priceRange": "₹₹"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Styles & Fonts -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <!-- Vue 3 CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
 </head>
 
 <body>
 
   <header class="site-header">
-
     <div class="container nav-wrap">
-
       <a class="brand" href="index.html">
-
-        <img src="images/Logo.jpg" alt="Trend Fusion Logo">
-
-        <span class="brand-fallback">
-          TREND FUSION
-        </span>
-
+        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo" style="height: 70px; width: auto; display: block;">
+        <span class="brand-fallback">TREND FUSION</span>
       </a>
-
-      <button class="menu-toggle" aria-label="Open navigation">
-        ☰
-      </button>
-
-      <nav class="nav" id="mainNav">
-
-        <a href="index.html">
-          Home
-        </a>
-
-        <a class="active" href="products.html">
-          Products
-        </a>
-
-        <a href="about.html">
-          About Us
-        </a>
-
-        <a href="contact.html">
-          Contact
-        </a>
-
+      <button class="menu-toggle" aria-label="Open navigation">☰</button>
+      <nav class="nav" id="mainNav" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a class="active" href="products.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
       </nav>
-
     </div>
-
   </header>
 
-
   <main>
-
     <section class="section">
-
       <!-- Vue Mount Container -->
       <div class="container" id="productDetail">
 
@@ -74,17 +102,17 @@
 
           <div class="product-detail">
             <div class="detail-image-wrap">
-              <img :src="API_BASE_URL + product.image_url" :alt="product.title">
+              <img :src="getProductImage(product)" :alt="product.name || product.title || 'Trend Fusion Bag'">
             </div>
 
             <div class="detail-info">
               <span class="tag">{{ product.category }}</span>
-              <h1>{{ product.name }}</h1>
-              <div class="detail-price">{{ product.price }}</div>
+              <h1>{{ product.name || product.title }}</h1>
+              <div class="detail-price">{{ formatPrice(product.price) }}</div>
               <p class="lead">{{ product.description }}</p>
 
-              <h3>Product Details</h3>
-              <ul class="detail-list">
+              <h3 v-if="product.details && product.details.length">Product Details</h3>
+              <ul class="detail-list" v-if="product.details && product.details.length">
                 <li v-for="(item, index) in product.details" :key="index">
                   {{ item }}
                 </li>
@@ -95,18 +123,15 @@
               </a>
 
               <p class="small-note">
-               
+                Direct order assistance via WhatsApp • Fast response
               </p>
             </div>
           </div>
         </template>
 
       </div>
-
     </section>
-
   </main>
-
 
   <a class="whatsapp-float"
     href="https://wa.me/919846124945?text=Hello%20Trend%20Fusion%2C%20I%20would%20like%20to%20contact%20you."
@@ -114,57 +139,28 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-
   <footer class="site-footer">
-
     <div class="container footer-grid">
-
       <div>
-
-        <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
-
-        <p>
-          Trend Fusion by Lakshmi Bags —
-          stylish, durable and practical bags.
-        </p>
-
+        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo" style="height: 70px; width: auto; display: block;">
+        <p>Trend Fusion by Lakshmi Bags — stylish, durable and practical bags handcrafted in Kerala.</p>
       </div>
-
-
       <div>
-
         <h3>Quick Links</h3>
-
         <a href="index.html">Home</a><a href="products.html">Products</a><a href="about.html">About Us</a><a
           href="contact.html">Contact</a><a href="admin.html">Admin</a>
       </div>
-
-
       <div>
-
         <h3>Contact</h3>
-
-        <p>98461 24945</p>
-
-        <p>79944 79719</p>
-
-        <p>Thalore,Thrissur,Kerala</p>
-
+        <p><a href="tel:+919846124945">98461 24945</a></p>
+        <p><a href="tel:+917994479719">79944 79719</a></p>
+        <p>Thalore, Thrissur, Kerala</p>
       </div>
-
     </div>
-
-
     <div class="copyright">
-
-      © <span id="year"></span>
-      Trend Fusion by Lakshmi Bags.
-      All rights reserved.
-
+      © <span id="year"></span> Trend Fusion by Lakshmi Bags. All rights reserved.
     </div>
-
   </footer>
-
 
   <!-- Website functions -->
   <script src="js/script.js"></script>
@@ -179,14 +175,13 @@
           API_BASE_URL: 'https://api.trendfusion.cc',
           phone: "919846124945",
           product: null,
-          // Static fallback dataset (will be replaced by cached_products or products array if available)
           products: [
             {
               id: 1,
               name: "Cloth Tote Bag",
               category: "tote",
-              price: "₹360",
-              image: "images/products/product-01.jpg",
+              price: 360,
+              image_url: "/images/products/product-01.jpg",
               description: "Cloth tote bag with double handle. Premium quality cloth, spacious and durable, with a practical everyday design.",
               details: [
                 "Premium quality cloth",
@@ -200,54 +195,97 @@
       },
 
       computed: {
-        // Generates the pre-filled WhatsApp enquiry link dynamically
         whatsappUrl() {
           if (!this.product) return '#';
-          const message = `Hello Trend Fusion, I am interested in the "${this.product.name}" (${this.product.price}). Please share availability and more details.`;
+          const title = this.product.name || this.product.title || 'Bag';
+          const priceStr = this.formatPrice(this.product.price);
+          const message = `Hello Trend Fusion, I am interested in the "${title}" (${priceStr}). Please share availability and more details.`;
           return `https://wa.me/${this.phone}?text=${encodeURIComponent(message)}`;
         }
       },
 
       methods: {
+        getProductImage(product) {
+          if (product && product.image_url) {
+            return product.image_url.startsWith('http')
+              ? product.image_url
+              : `${this.API_BASE_URL}${product.image_url}`;
+          }
+          if (product && product.image) {
+            return product.image;
+          }
+          return 'images/products/product-01.jpg';
+        },
+
+        formatPrice(price) {
+          if (typeof price === 'number') {
+            return `₹${price.toFixed(2)}`;
+          }
+          return price || '₹0';
+        },
+
         loadProductData() {
-          const params = new URLSearchParams(window.location.search);
-          const id = Number(params.get("id")) || 1;
-
-          let sourceProducts = [];
-
-          // 1. Try reading cached API products from LocalStorage
-          const cached = localStorage.getItem('cached_products');
-          if (cached) {
+          const savedProduct = localStorage.getItem('selected_product');
+          if (savedProduct) {
             try {
-              sourceProducts = JSON.parse(cached);
+              this.product = JSON.parse(savedProduct);
             } catch (e) {
-              console.error('Error parsing cached_products:', e);
+              console.error('Error parsing selected_product:', e);
             }
           }
 
-          // 2. Fall back to global window.products (from js/products.js) or local fallback array
-          if (!sourceProducts.length) {
-            sourceProducts = (typeof window.products !== 'undefined' && window.products.length)
-              ? window.products
-              : this.products;
+          if (!this.product) {
+            const params = new URLSearchParams(window.location.search);
+            const id = Number(params.get("id")) || 1;
+
+            let sourceProducts = [];
+            const cached = localStorage.getItem('cached_products');
+            if (cached) {
+              try {
+                sourceProducts = JSON.parse(cached);
+              } catch (e) {
+                console.error('Error parsing cached_products:', e);
+              }
+            }
+
+            if (!sourceProducts.length) {
+              sourceProducts = (typeof window.products !== 'undefined' && window.products.length)
+                ? window.products
+                : this.products;
+            }
+
+            this.product = sourceProducts.find(item => Number(item.id) === id) || sourceProducts[0];
           }
-          // 3. Find target product or default to the first product
-          this.product = sourceProducts.find(item => Number(item.id) === id) || sourceProducts[0];
+
+          this.updatePageSEOMetadata();
+        },
+
+        updatePageSEOMetadata() {
+          if (!this.product) return;
+
+          const titleName = this.product.name || this.product.title || 'Product';
+          const pageTitle = `${titleName} | Trend Fusion by Lakshmi Bags`;
+          document.title = pageTitle;
+
+          const metaDesc = document.querySelector('meta[name="description"]');
+          if (metaDesc && this.product.description) {
+            metaDesc.setAttribute('content', `${titleName} - ${this.product.description}`);
+          }
+
+          const ogTitle = document.getElementById('og-title');
+          if (ogTitle) ogTitle.setAttribute('content', pageTitle);
+
+          const ogImage = document.getElementById('og-image');
+          if (ogImage) ogImage.setAttribute('content', this.getProductImage(this.product));
         }
       },
 
       mounted() {
         this.loadProductData();
-        // Footer year script
+
         const yearEl = document.getElementById('year');
         if (yearEl) {
           yearEl.textContent = new Date().getFullYear();
-        }
-
-        const savedProduct = localStorage.getItem('selected_product');
-        if (savedProduct) {
-          this.product = JSON.parse(savedProduct);
-          console.log(this.product);
         }
       }
     }).mount('#productDetail');
@@ -256,3 +294,4 @@
 </body>
 
 </html>
+

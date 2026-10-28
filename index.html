@@ -4,25 +4,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Trend Fusion by Lakshmi Bags - stylish, durable and practical bags.">
-  <title>Trend Fusion | Lakshmi Bags</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Trend Fusion by Lakshmi Bags | Stylish & Sustainable Bags in Kerala</title>
+  <meta name="description" content="Discover Trend Fusion by Lakshmi Bags. Shop stylish, durable, and eco-friendly tote bags, handbags, jute bags, and travel bags handcrafted in Thrissur, Kerala.">
+  <meta name="keywords" content="Lakshmi Bags, Trend Fusion, tote bags Thrissur, jute bags Kerala, handbags, travel bags, eco-friendly bags">
+  <meta name="author" content="Trend Fusion by Lakshmi Bags">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://trendfusion.cc/index.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/Logo.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Logo.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/Logo.jpg">
+
+  <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trendfusion.cc/index.html">
+  <meta property="og:title" content="Trend Fusion by Lakshmi Bags | Carry Your Style">
+  <meta property="og:description" content="Explore stylish, durable, and practical bags made for everyday life. Shop our featured collection or order via WhatsApp directly.">
+  <meta property="og:image" content="https://trendfusion.cc/images/Logo.jpg">
+  <meta property="og:site_name" content="Trend Fusion by Lakshmi Bags">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://trendfusion.cc/index.html">
+  <meta name="twitter:title" content="Trend Fusion by Lakshmi Bags | Carry Your Style">
+  <meta name="twitter:description" content="Explore stylish, durable, and practical bags made for everyday life. Contact us on WhatsApp to order directly.">
+  <meta name="twitter:image" content="https://trendfusion.cc/images/Logo.jpg">
+
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://trendfusion.cc/#organization",
+        "name": "Trend Fusion by Lakshmi Bags",
+        "url": "https://trendfusion.cc/",
+        "logo": "https://trendfusion.cc/images/Logo.jpg",
+        "image": "https://trendfusion.cc/images/Logo.jpg",
+        "description": "Manufacturer and retailer of stylish, durable, and practical bags based in Thrissur, Kerala.",
+        "telephone": "+919846124945",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Thalore",
+          "addressRegion": "Thrissur",
+          "addressCountry": "IN",
+          "addressRegion": "Kerala"
+        },
+        "priceRange": "₹₹"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://trendfusion.cc/#website",
+        "url": "https://trendfusion.cc/",
+        "name": "Trend Fusion by Lakshmi Bags",
+        "publisher": {
+          "@id": "https://trendfusion.cc/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Styles & Fonts -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <!-- Vue 3 CDN -->
+  
+  <!-- Vue 3 & Axios CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 </head>
 
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="index.html">
-        <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
+        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo" style="height: 100px; width: auto; display: block;">
         <span class="brand-fallback">TREND FUSION</span>
       </a>
       <button class="menu-toggle" aria-label="Open navigation">☰</button>
-      <nav class="nav" id="mainNav">
+      <nav class="nav" id="mainNav" aria-label="Main Navigation">
         <a class="active" href="index.html">Home</a>
         <a href="products.html">Products</a>
         <a href="about.html">About Us</a>
@@ -34,11 +99,11 @@
   <main>
     <section class="hero">
       <div class="carousel" id="heroCarousel">
-        <div class="slide active"><img src="images/carousel/cloth-tote.jpg" alt="Cloth tote bag"></div>
-        <div class="slide"><img src="images/carousel/small-handbag.jpg" alt="Small handbag"></div>
-        <div class="slide"><img src="images/carousel/jute-red.jpg" alt="Red jute bag"></div>
-        <div class="slide"><img src="images/carousel/travel-bag.jpg" alt="Travel bag"></div>
-        <div class="slide"><img src="images/carousel/jute-blue.jpg" alt="Blue jute bag"></div>
+        <div class="slide active"><img src="images/carousel/cloth-tote.jpg" alt="Eco-friendly cloth tote bag by Trend Fusion"></div>
+        <div class="slide"><img src="images/carousel/small-handbag.jpg" alt="Stylish small handbag by Trend Fusion"></div>
+        <div class="slide"><img src="images/carousel/jute-red.jpg" alt="Durable red jute bag by Lakshmi Bags"></div>
+        <div class="slide"><img src="images/carousel/travel-bag.jpg" alt="Spacious travel bag for journeys"></div>
+        <div class="slide"><img src="images/carousel/jute-blue.jpg" alt="Handcrafted blue jute bag"></div>
         <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
         <button class="carousel-btn next" aria-label="Next slide">›</button>
         <div class="dots" id="carouselDots"></div>
@@ -46,7 +111,8 @@
       <div class="hero-overlay"></div>
       <div class="hero-content container">
         <p class="eyebrow">TREND FUSION • BY LAKSHMI BAGS</p>
-        <h1>Carry Your Style.<br>Carry Your Story.</h1>
+        <!-- Single primary H1 per page for optimal on-page SEO ranking -->
+        <h1>Carry Your Style. Carry Your Story.</h1>
         <p>Discover stylish, practical and sustainable bags made for everyday life and every journey.</p>
         <div class="hero-actions">
           <a class="btn" href="products.html">Explore Collection</a>
@@ -62,11 +128,9 @@
         <div>
           <p class="eyebrow">WELCOME TO TREND FUSION</p>
           <h2>Bags that combine style, comfort and everyday usefulness.</h2>
-          <p>Trend Fusion by Lakshmi Bags is presented here as a clean static company website. Replace the placeholder
-            company story and contact details with the customer's final information.</p>
+          <p>Trend Fusion by Lakshmi Bags offers handcrafted, premium tote bags, handbags, and jute bags in Thrissur, Kerala. Discover our sustainable collection designed to fit your lifestyle.</p>
           <a class="text-link" href="about.html">Learn more about us →</a>
         </div>
-
       </div>
     </section>
 
@@ -75,25 +139,14 @@
         <div class="section-heading">
           <p class="eyebrow">FEATURED COLLECTION</p>
           <h2>Popular Bags</h2>
-
         </div>
-        <!-- <div class="product-grid" id="featuredProducts"></div> -->
-
-
-
-
-
-
-
-
-
 
         <div id="app" class="container">
-          <h2 class="section-title">Featured Products</h2>
+          <h3 class="section-title">Featured Products</h3>
           <div class="product-grid">
             <article v-for="product in featuredProducts" :key="'featured-' + product.id" class="product-card">
-              <a  class="product-image-link" @click="selectProduct(product)">
-                <img :src="API_BASE_URL + product.image_url" :alt="product.name" loading="lazy">
+              <a class="product-image-link" @click="selectProduct(product)" :aria-label="'View details for ' + (product.title || product.name || 'product')">
+                <img :src="getProductImage(product)" :alt="product.title || product.name || 'Trend Fusion Bag'" loading="lazy">
               </a>
 
               <div class="product-info flex flex-col h-full justify-between">
@@ -103,23 +156,16 @@
                   <p>{{ product.description }}</p>
                 </div>
 
-                <!-- mt-auto pushes this block to the very bottom -->
                 <div class="card-bottom mt-auto pt-3 flex items-center justify-between">
-                  <strong class="price"> {{ formatPrice(product.price) }}</strong>
+                  <strong class="price">{{ formatPrice(product.price) }}</strong>
                   <a class="btn btn-small" @click="selectProduct(product)">
                     View Details
                   </a>
                 </div>
               </div>
-
             </article>
           </div>
-
         </div>
-
-
-
-
       </div>
     </section>
 
@@ -142,11 +188,12 @@
     target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <img src="images/Logo.jpg" alt="Company Logo" style="height: 70px; width: auto; display: block;">
-        <p>Trend Fusion by Lakshmi Bags — stylish, durable and practical bags.</p>
+        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo" style="height: 70px; width: auto; display: block;">
+        <p>Trend Fusion by Lakshmi Bags — stylish, durable and practical bags handcrafted in Kerala.</p>
       </div>
       <div>
         <h3>Quick Links</h3>
@@ -155,19 +202,13 @@
       </div>
       <div>
         <h3>Contact</h3>
-        <p>98461 24945</p>
-        <p>79944 79719</p>
-        <p>Thalore,Thrissur,Kerala</p>
+        <p><a href="tel:+919846124945">98461 24945</a></p>
+        <p><a href="tel:+917994479719">79944 79719</a></p>
+        <p>Thalore, Thrissur, Kerala</p>
       </div>
     </div>
     <div class="copyright">© <span id="year"></span> Trend Fusion by Lakshmi Bags. All rights reserved.</div>
   </footer>
-  <!-- <script src="js/products.js"></script> -->
-
-
-
-
-
 
   <script>
     const { createApp } = Vue;
@@ -205,9 +246,7 @@
           this.loading = true;
           this.errorMessage = '';
           try {
-            // FIX: Referenced API_BASE_URL via 'this.'
             const response = await axios.get(`${this.API_BASE_URL}/api/products`);
-
             this.productitems = response.data;
             localStorage.setItem('cached_products', JSON.stringify(this.productitems));
           } catch (error) {
@@ -218,7 +257,6 @@
             }
             console.error('Error fetching products:', error);
 
-            // Fallback to cache if request fails
             const productlist = localStorage.getItem('cached_products');
             if (productlist) {
               try {
@@ -232,17 +270,15 @@
           }
         },
 
-        // Helper to resolve images whether from backend or local assets
         getProductImage(product) {
-          if (product.image_url) {
+          if (product && product.image_url) {
             return product.image_url.startsWith('http')
               ? product.image_url
               : `${this.API_BASE_URL}${product.image_url}`;
           }
-          return product.image_url || 'images/products/product-01.jpg';
+          return 'images/products/product-01.jpg';
         },
 
-        // Helper to format price correctly
         formatPrice(price) {
           if (typeof price === 'number') {
             return `₹${price.toFixed(2)}`;
@@ -274,8 +310,6 @@
     // Footer Copyright Year Script
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
-
 
   <script src="js/script.js"></script>
 </body>
