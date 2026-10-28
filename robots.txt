@@ -1,0 +1,11 @@
+# Allow all search engine crawlers full access to public pages
+User-agent: *
+Allow: /
+
+# Disallow indexing of private or administration pages
+Disallow: /admin.html
+
+Disallow: /dashboard.html
+
+# Sitemap Location
+Sitemap: https://trendfusion.cc/sitemap.xml
