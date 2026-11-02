@@ -1,0 +1,354 @@
+[
+    {
+        "id": "prod-0aac5726",
+        "title": "Premium Quality Sling Bag",
+        "description": "Style in Every Move...",
+        "price": 450.0,
+        "category": "Sling Bag",
+        "image_url": "./media/429ead9e721f4708a632093c4c8864bc.jpg",
+        "details": ["Double Compartment", "Elegant & Stylish Design"]
+    },
+    {
+        "id": "prod-ae638503",
+        "title": "Shoulder Bag",
+        "description": "Styles that stay with you, where ever you go",
+        "price": 280.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/0729aeb2f3f24e5d9df72ac353d870bd.jpg",
+        "details": ["Double Compartment", "Multiple Pockets", "Durable & Long-lasting"]
+    },
+    {
+        "id": "prod-70f0917a",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 390.0,
+        "category": "Sling Bag",
+        "image_url": "/media/73bb5520687a4ad89a612ed8c7fbd84e.jpg",
+        "details": ["Double Compartment", "Adjustable Shoulder Strap"]
+    },
+    {
+        "id": "prod-9cb3ab74",
+        "title": "Shoulder Bag",
+        "description": "Style that stays with you, wherever you go",
+        "price": 280.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/4024f1412c8a4dd8b7d3980bf1e3c975.jpg",
+        "details": ["Double Compartment", "Multiple Pockets"]
+    },
+    {
+        "id": "prod-cb602d1f",
+        "title": "CLOTH CANVAS Material Bag",
+        "description": null,
+        "price": 250.0,
+        "category": "Cloth Canvas Bag",
+        "image_url": "/media/f7a0370ecc4b42c4a088d25ee08c5673.jpg",
+        "details": ["Premium Canvas Cloth", "One Side Pocket"]
+    },
+    {
+        "id": "prod-9d78be09",
+        "title": "LEATHER Shoulder Bag",
+        "description": "Everyday Companion",
+        "price": 510.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/6a7fbf6e92194353b515daf60937d431.jpg",
+        "details": ["Double Compartment", "Premium Quality Leather"]
+    },
+    {
+        "id": "prod-10324be9",
+        "title": "Jute Shopper Back Edition",
+        "description": "Eco Friendly Jute Material",
+        "price": 150.0,
+        "category": "Jute Shopper",
+        "image_url": "/media/56faa2ccf86b4104b260046d491cb0f9.jpg",
+        "details": ["Eco Friendly Jute Material", "Strong & Durable"]
+    },
+    {
+        "id": "prod-33ee03c2",
+        "title": "Jute Hand Bag",
+        "description": "Carry Nature in Style",
+        "price": 460.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/1ac13498795e4c4899dc6aef7ab765a5.jpg",
+        "details": ["Eco Friendly", "Single Compartment"]
+    },
+    {
+        "id": "prod-3e925720",
+        "title": "Jute Hand Bag",
+        "description": "Carry Nature in Style",
+        "price": 460.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/8f765c1da276430d804e00eb54e0fae2.jpg",
+        "details": ["Eco Friendly", "Single Compartment"]
+    },
+    {
+        "id": "prod-d8bd1214",
+        "title": "Cloth Canvas BAG",
+        "description": "Your Everyday Travel Companion",
+        "price": 410.0,
+        "category": "Cloth Canvas Bag",
+        "image_url": "/media/d1aebebd3dbb40b183c2193944274fdd.jpg",
+        "details": ["Single Compartment", "Stylish & Trendy Look"]
+    },
+    {
+        "id": "prod-8e779add",
+        "title": "Cloth Canvas BAG",
+        "description": "Your Everyday Travel Companion",
+        "price": 410.0,
+        "category": "Cloth Canvas Bag",
+        "image_url": "/media/d0af3bcdd725456898b1e0add62e6196.jpg",
+        "details": ["Single Compartment"]
+    },
+    {
+        "id": "prod-21895d29",
+        "title": "Sling Bag",
+        "description": "Style in every step",
+        "price": 450.0,
+        "category": "Sling Bag",
+        "image_url": "/media/eb29bf81bb7f43bcb9c314c255ee9fdc.jpg",
+        "details": ["Double Compartment", "Lightweight & Comfortable", "Stylish & Trendy Look"]
+    },
+    {
+        "id": "prod-0ade1347",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530.0,
+        "category": "Backpack",
+        "image_url": "/media/b827983fde014262bd917459c1614863.jpg",
+        "details": ["Double Compartment", "Double Pocket"]
+    },
+    {
+        "id": "prod-bf8f24e6",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530.0,
+        "category": "Backpack",
+        "image_url": "/media/f4563d71840c483fbfd843b92b4a9181.jpg",
+        "details": ["Double Compartment", "Double Pocket"]
+    },
+    {
+        "id": "prod-fa5542d8",
+        "title": "LUNCH BAG",
+        "description": null,
+        "price": 250.0,
+        "category": "Lunch Bag",
+        "image_url": "/media/5a185a35bb124824bb534b31437b2b12.jpg",
+        "details": ["One Compartment", "One Outside Pocket", "Water Bottle Pocket"]
+    },
+    {
+        "id": "prod-bd7911bd",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530.0,
+        "category": "Backpack",
+        "image_url": "/media/a83ad5b76a7043b090dc4e011145ecf7.jpg",
+        "details": ["Double Compartment", "Double Pocket"]
+    },
+    {
+        "id": "prod-0f6168dd",
+        "title": "LUNCH BAG",
+        "description": null,
+        "price": 250.0,
+        "category": "Lunch Bag",
+        "image_url": "/media/ef76ba3a6c7f4bbf9e23640f7913bb86.jpg",
+        "details": ["One Compartment", "One Outside Pocket", "Water Bottle Pocket"]
+    },
+    {
+        "id": "prod-0e710300",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530.0,
+        "category": "Backpack",
+        "image_url": "/media/2586cf56190f4727b6c66826ae55b5de.jpg",
+        "details": ["Double Compartment", "Double Pocket"]
+    },
+    {
+        "id": "prod-a969ed07",
+        "title": "LUNCH BAG",
+        "description": null,
+        "price": 250.0,
+        "category": "Lunch Bag",
+        "image_url": "/media/eb97c6fae61e401684e636a920d9340f.jpg",
+        "details": ["One Compartment", "One Outside Pocket", "Water Bottle Pocket"]
+    },
+    {
+        "id": "prod-3ce1ba42",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 410.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/c2faa82aeb26460e8374bfb2d45a1123.jpg",
+        "details": ["Double Compartment", "1 Free Purse"]
+    },
+    {
+        "id": "prod-a9e0c2b6",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 410.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/c6848c4309ee4f7891e07a46b38ab160.jpg",
+        "details": ["Double Compartment", "1 Free Purse"]
+    },
+    {
+        "id": "prod-2623c5b4",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 410.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/6e631ad22cc44d14919d3466c78b154f.jpg",
+        "details": ["Double Compartment", "1 Free Purse"]
+    },
+    {
+        "id": "prod-ede42e21",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 410.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/f426292dd17a4dbb93414729db99121a.jpg",
+        "details": ["Double Compartment", "1 Free Purse"]
+    },
+    {
+        "id": "prod-d0a69e30",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 410.0,
+        "category": "Shoulder Bag",
+        "image_url": "/media/16d88e7e484a494db2d15281c4738fc5.jpg",
+        "details": ["Double Compartment", "1 Free Purse"]
+    },
+    {
+        "id": "prod-d66b0073",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 490.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/9f1873af75614223a3e12c57c3c6f677.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-1a01d6a8",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 490.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/aa131f6a85bd40e8b59e74dfb4204ffe.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-46841ff2",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 490.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/b103e749ca854bb4a3bdc1f5580eafa0.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-5e8dbb75",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 490.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/75def10eb390452f9967174ada29904b.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-24e1c31e",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 490.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/e49d6899ad2145b6b2465d1e2e4c1a08.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-1372168c",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 460.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/196725827c88424fa42e8beda898af9a.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-db3fa0e8",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 460.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/141ad3db19994f25a347aa0a44ed5c35.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-7670845a",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 460.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/9091ca5b696a46b8bd25510d6f5f0a58.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-a69374ce",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 460.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/9ea260554f2043268f57db5fc86e2f95.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-ba88f473",
+        "title": "Jute Hand Bag",
+        "description": null,
+        "price": 460.0,
+        "category": "Jute Hand Bag",
+        "image_url": "/media/75e0faf4f96d42c7a5d3dfa0e0d27406.jpg",
+        "details": ["Eco Friendly", "Durable & Strong", "Single Compartment", "Lightweight", "Stylish Everyday Use"]
+    },
+    {
+        "id": "prod-7f3528bd",
+        "title": "TREKKING BAG",
+        "description": null,
+        "price": 680.0,
+        "category": "Trekking Bag",
+        "image_url": "/media/5d80e74df34a4c07b9f8b26a1c1d5cff.jpg",
+        "details": ["3 Compartments", "One Outside Pocket"]
+    },
+    {
+        "id": "prod-51869e1f",
+        "title": "TREKKING BAG",
+        "description": null,
+        "price": 680.0,
+        "category": "Trekking Bag",
+        "image_url": "/media/73095e6787eb4f5ebf7c987e79dbb267.jpg",
+        "details": ["3 Compartments", "One Outside Pocket"]
+    },
+    {
+        "id": "prod-40b62c28",
+        "title": "SPORTS BAG",
+        "description": null,
+        "price": 220.0,
+        "category": "Sports Bag",
+        "image_url": "/media/6441297edaf54c729914eb206ce3103f.jpg",
+        "details": ["Single Compartment", "One Outside Pocket"]
+    },
+    {
+        "id": "prod-9b4978d3",
+        "title": "SPORTS BAG",
+        "description": null,
+        "price": 220.0,
+        "category": "Sports Bag",
+        "image_url": "/media/ad83f20694334a1ea67ee6e5f914c530.jpg",
+        "details": ["Single Compartment", "One Outside Pocket"]
+    },
+    {
+        "id": "prod-fb88db6f",
+        "title": "SPORTS BAG",
+        "description": null,
+        "price": 220.0,
+        "category": "Sports Bag",
+        "image_url": "/media/af5db18ea359411793a26416aa64abc2.jpg",
+        "details": ["Single Compartment", "One Outside Pocket"]
+    }
+]
+

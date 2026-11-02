@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Primary SEO Meta Tags -->
   <title>Trend Fusion by Lakshmi Bags | Stylish & Sustainable Bags in Kerala</title>
-  <meta name="description" content="Discover Trend Fusion by Lakshmi Bags. Shop stylish, durable, and eco-friendly tote bags, handbags, jute bags, and travel bags handcrafted in Thrissur, Kerala.">
-  <meta name="keywords" content="Lakshmi Bags, Trend Fusion, tote bags Thrissur, jute bags Kerala, handbags, travel bags, eco-friendly bags">
+  <meta name="description"
+    content="Discover Trend Fusion by Lakshmi Bags. Shop stylish, durable, and eco-friendly tote bags, handbags, jute bags, and travel bags handcrafted in Thrissur, Kerala.">
+  <meta name="keywords"
+    content="Lakshmi Bags, Trend Fusion, tote bags Thrissur, jute bags Kerala, handbags, travel bags, eco-friendly bags">
   <meta name="author" content="Trend Fusion by Lakshmi Bags">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://trendfusion.cc/index.html">
@@ -22,7 +24,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://trendfusion.cc/index.html">
   <meta property="og:title" content="Trend Fusion by Lakshmi Bags | Carry Your Style">
-  <meta property="og:description" content="Explore stylish, durable, and practical bags made for everyday life. Shop our featured collection or order via WhatsApp directly.">
+  <meta property="og:description"
+    content="Explore stylish, durable, and practical bags made for everyday life. Shop our featured collection or order via WhatsApp directly.">
   <meta property="og:image" content="https://trendfusion.cc/images/Logo.jpg">
   <meta property="og:site_name" content="Trend Fusion by Lakshmi Bags">
   <meta property="og:locale" content="en_US">
@@ -31,7 +34,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://trendfusion.cc/index.html">
   <meta name="twitter:title" content="Trend Fusion by Lakshmi Bags | Carry Your Style">
-  <meta name="twitter:description" content="Explore stylish, durable, and practical bags made for everyday life. Contact us on WhatsApp to order directly.">
+  <meta name="twitter:description"
+    content="Explore stylish, durable, and practical bags made for everyday life. Contact us on WhatsApp to order directly.">
   <meta name="twitter:image" content="https://trendfusion.cc/images/Logo.jpg">
 
   <!-- Structured Data (Schema.org JSON-LD) -->
@@ -73,7 +77,7 @@
   <!-- Styles & Fonts -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
+
   <!-- Vue 3 & Axios CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -83,7 +87,8 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="index.html">
-        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo" style="height: 100px; width: auto; display: block;">
+        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo"
+          style="height: 100px; width: auto; display: block;">
         <span class="brand-fallback">TREND FUSION</span>
       </a>
       <button class="menu-toggle" aria-label="Open navigation">☰</button>
@@ -99,8 +104,10 @@
   <main>
     <section class="hero">
       <div class="carousel" id="heroCarousel">
-        <div class="slide active"><img src="images/carousel/cloth-tote.jpg" alt="Eco-friendly cloth tote bag by Trend Fusion"></div>
-        <div class="slide"><img src="images/carousel/small-handbag.jpg" alt="Stylish small handbag by Trend Fusion"></div>
+        <div class="slide active"><img src="images/carousel/cloth-tote.jpg"
+            alt="Eco-friendly cloth tote bag by Trend Fusion"></div>
+        <div class="slide"><img src="images/carousel/small-handbag.jpg" alt="Stylish small handbag by Trend Fusion">
+        </div>
         <div class="slide"><img src="images/carousel/jute-red.jpg" alt="Durable red jute bag by Lakshmi Bags"></div>
         <div class="slide"><img src="images/carousel/travel-bag.jpg" alt="Spacious travel bag for journeys"></div>
         <div class="slide"><img src="images/carousel/jute-blue.jpg" alt="Handcrafted blue jute bag"></div>
@@ -128,7 +135,8 @@
         <div>
           <p class="eyebrow">WELCOME TO TREND FUSION</p>
           <h2>Bags that combine style, comfort and everyday usefulness.</h2>
-          <p>Trend Fusion by Lakshmi Bags offers handcrafted, premium tote bags, handbags, and jute bags in Thrissur, Kerala. Discover our sustainable collection designed to fit your lifestyle.</p>
+          <p>Trend Fusion by Lakshmi Bags offers handcrafted, premium tote bags, handbags, and jute bags in Thrissur,
+            Kerala. Discover our sustainable collection designed to fit your lifestyle.</p>
           <a class="text-link" href="about.html">Learn more about us →</a>
         </div>
       </div>
@@ -145,10 +153,11 @@
           <h3 class="section-title">Featured Products</h3>
           <div class="product-grid">
             <article v-for="product in featuredProducts" :key="'featured-' + product.id" class="product-card">
-              <a class="product-image-link" @click="selectProduct(product)" :aria-label="'View details for ' + (product.title || product.name || 'product')">
-                <img :src="getProductImage(product)" :alt="product.title || product.name || 'Trend Fusion Bag'" loading="lazy">
+              <a class="product-image-link" @click="selectProduct(product)"
+                :aria-label="'View details for ' + (product.title || product.name || 'product')">
+                <img :src="getProductImage(product)" :alt="product.title || product.name || 'Trend Fusion Bag'"
+                  loading="lazy">
               </a>
-
               <div class="product-info flex flex-col h-full justify-between">
                 <div>
                   <span class="tag">{{ product.category }}</span>
@@ -192,7 +201,8 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo" style="height: 70px; width: auto; display: block;">
+        <img src="images/Logo.jpg" alt="Trend Fusion by Lakshmi Bags Logo"
+          style="height: 70px; width: auto; display: block;">
         <p>Trend Fusion by Lakshmi Bags — stylish, durable and practical bags handcrafted in Kerala.</p>
       </div>
       <div>
@@ -210,8 +220,9 @@
     <div class="copyright">© <span id="year"></span> Trend Fusion by Lakshmi Bags. All rights reserved.</div>
   </footer>
 
+
   <script>
-    const { createApp } = Vue;
+    const { createApp, ref } = Vue;
 
     createApp({
       data() {
@@ -222,11 +233,17 @@
           loading: false,
           products: [],
           productitems: [],
+
+          jsonData: null,
+          loaded: false,
+          statusMessage: '',
+          isError: false,
         };
       },
       computed: {
         categories() {
-          const cats = (this.productitems.length ? this.productitems : this.products).map(p => p.category);
+          const list = this.productitems.length ? this.productitems : this.products;
+          const cats = list.map(p => p.category);
           return ['all', ...new Set(cats)];
         },
         filteredProducts() {
@@ -242,39 +259,45 @@
         }
       },
       methods: {
-        async fetchProducts() {
-          this.loading = true;
-          this.errorMessage = '';
+        async fetchDefaultJson() {
           try {
-            const response = await axios.get(`${this.API_BASE_URL}/api/products`);
-            this.productitems = response.data;
-            localStorage.setItem('cached_products', JSON.stringify(this.productitems));
-          } catch (error) {
-            if (error.response && error.response.data && error.response.data.detail) {
-              this.errorMessage = error.response.data.detail;
-            } else {
-              this.errorMessage = 'Failed to load products from server. Showing cached/default items.';
-            }
-            console.error('Error fetching products:', error);
+            const response = await fetch('data.json');
+            if (!response.ok) throw new Error('Could not fetch data.json. Ensure files are run via a local server.');
 
-            const productlist = localStorage.getItem('cached_products');
-            if (productlist) {
-              try {
-                this.productitems = JSON.parse(productlist);
-              } catch (e) {
-                console.error('Cache parsing error:', e);
-              }
+            const rawData = await response.json();
+            this.jsonData = rawData;
+
+            // Handle both formats: if data.json is an array or an object containing an array
+            if (Array.isArray(rawData)) {
+              this.productitems = rawData;
+            } else if (rawData && Array.isArray(rawData.products)) {
+              this.productitems = rawData.products;
+            } else {
+              this.productitems = [];
             }
-          } finally {
-            this.loading = false;
+
+            this.loaded = true;
+            this.statusMessage = 'Successfully loaded data.json!';
+            this.isError = false;
+          } catch (err) {
+            this.isError = true;
+            this.statusMessage = err.message;
+            console.error('Error fetching data.json:', err);
           }
         },
 
         getProductImage(product) {
           if (product && product.image_url) {
-            return product.image_url.startsWith('http')
-              ? product.image_url
-              : `${this.API_BASE_URL}${product.image_url}`;
+            // If it's a full URL, return it
+            if (product.image_url.startsWith('http')) {
+              return product.image_url;
+            }
+            // Clean up leading slashes or dots so it loads locally
+            let imgPath = product.image_url;
+            if (imgPath.startsWith('./')) imgPath = imgPath.slice(2);
+            if (imgPath.startsWith('/')) imgPath = imgPath.slice(1);
+
+            return imgPath; // Returns e.g. "media/429ead9e721f4708a632093c4c8864bc.jpg"
           }
           return 'images/products/product-01.jpg';
         },
@@ -298,18 +321,18 @@
         clearSelectedProduct() {
           localStorage.removeItem('selected_product');
         }
-
       },
       async mounted() {
-        await this.fetchProducts();
         this.clearSelectedProduct();
+        await this.fetchDefaultJson();
       }
-
     }).mount('#app');
 
     // Footer Copyright Year Script
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+
 
   <script src="js/script.js"></script>
 </body>

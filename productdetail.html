@@ -205,14 +205,18 @@
       },
 
       methods: {
-        getProductImage(product) {
+         getProductImage(product) {
           if (product && product.image_url) {
-            return product.image_url.startsWith('http')
-              ? product.image_url
-              : `${this.API_BASE_URL}${product.image_url}`;
-          }
-          if (product && product.image) {
-            return product.image;
+            // If it's a full URL, return it
+            if (product.image_url.startsWith('http')) {
+              return product.image_url;
+            }
+            // Clean up leading slashes or dots so it loads locally
+            let imgPath = product.image_url;
+            if (imgPath.startsWith('./')) imgPath = imgPath.slice(2);
+            if (imgPath.startsWith('/')) imgPath = imgPath.slice(1);
+
+            return imgPath; // Returns e.g. "media/429ead9e721f4708a632093c4c8864bc.jpg"
           }
           return 'images/products/product-01.jpg';
         },
