@@ -206,6 +206,12 @@
           isError: false,
         };
       },
+      watch: {
+        // 2. Watch for changes and save to sessionStorage automatically
+        currentCategory(newValue) {
+          sessionStorage.setItem('currentCategory', newValue);
+        }
+      },
       computed: {
         categories() {
           const cats = this.products.map(p => p.category).filter(Boolean);
@@ -286,6 +292,15 @@
       },
       async mounted() {
         await this.fetchProducts();
+        const savedCategory = sessionStorage.getItem('currentCategory');
+
+        if (savedCategory) {
+          // Read the session data if it exists
+          this.currentCategory = savedCategory;
+        } else {
+          // Otherwise, store the default value into session
+          sessionStorage.setItem('currentCategory', this.currentCategory);
+        }
       }
     }).mount('#app');
 

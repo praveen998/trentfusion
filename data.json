@@ -349,6 +349,290 @@
         "category": "Sports Bag",
         "image_url": "/media/af5db18ea359411793a26416aa64abc2.jpg",
         "details": ["Single Compartment", "One Outside Pocket"]
+    },
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "id": "prod-1",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/1.jpeg",
+        "details": ["2 Compartments","3 out side Pockets"]
+    },
+    
+    {
+        "id": "prod-2",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/2.jpeg",
+        "details": ["1 Compartments","1 out side Pockets","Trendy Design"]
+    },
+        {
+        "id": "prod-3",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/3.jpeg",
+        "details": ["2 Compartments","2 out side Pockets"]
+    },
+        {
+        "id": "prod-4",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/4.jpeg",
+        "details": ["3 Compartments","1 out side Pockets"]
+    },
+        {
+        "id": "prod-5",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/5.jpeg",
+        "details": ["2 Compartments","1 out side Pockets"]
+    },
+        {
+        "id": "prod-6",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/6.jpeg",
+        "details": ["2 Compartments","3 out side Pockets"]
+    },
+        {
+        "id": "prod-7",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/7.jpeg",
+        "details": ["3 Compartments","3 out side Pockets","Trendy Design"]
+    },
+        {
+        "id": "prod-8",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/8.jpeg",
+        "details": ["3 Compartments","1 out side Pockets"]
+    },
+        {
+        "id": "prod-9",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/9.jpeg",
+        "details": ["3 Compartments","1 out side Pockets"]
+    },
+        {
+        "id": "prod-10",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/10.jpeg",
+        "details": ["1 Compartments"]
+    },
+        {
+        "id": "prod-11",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/11.jpeg",
+        "details": ["3 Compartments","2 out side Pockets"]
+    },
+        {
+        "id": "prod-12",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/12.jpeg",
+        "details": ["2 Compartments","3 out side Pockets"]
+    },
+        {
+        "id": "prod-13",
+        "title": "Shoulder Bag",
+        "description": null,
+        "price": 280,
+        "category": "Shoulder Bag",
+        "image_url": "/media/13.jpeg",
+        "details": ["3 Compartments","1 out side Pockets"]
+    },
+        {
+        "id": "prod-14",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 350,
+        "category": "Sling Bag",
+        "image_url": "/media/14.jpeg",
+        "details": ["Double Compartment","Multiple Storage Pockets","Lightweight & Comfortable","Durable Fabric"]
+    },
+        {   
+        "id": "prod-15",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 350,
+        "category": "Sling Bag",
+        "image_url": "/media/15.jpeg",
+        "details": ["Double Compartment","Specious & Orgnized","Lightweight & Comfortable","Durable Fabric"]
+    },
+        {
+        "id": "prod-16",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 350,
+        "category": "Sling Bag",
+        "image_url": "/media/16.jpeg",
+        "details": ["Double Compartment","Specious & Orgnized","Lightweight & Comfortable","Durable Fabric"]
+    },
+        {
+        "id": "prod-17",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 450,
+        "category": "Sling Bag",
+        "image_url": "/media/17.jpeg",
+        "details": ["Double Compartment","Lightweight & Comfortable","Durable Fabric","Trendy Design"]
+    },
+        {
+        "id": "prod-18",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 270,
+        "category": "Sling Bag",
+        "image_url": "/media/18.jpeg",
+        "details": ["Double Compartment","Lightweight & Comfortable","Durable Fabric","Trendy Design"]
+    },
+        {
+        "id": "prod-19",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 270,
+        "category": "Sling Bag",
+        "image_url": "/media/19.jpeg",
+        "details": ["Double Compartment","Lightweight & Comfortable","Durable Fabric","Trendy Design"]
+    },
+        {
+        "id": "prod-20",
+        "title": "Sling Bag",
+        "description": null,
+        "price": 270,
+        "category": "Sling Bag",
+        "image_url": "/media/20.jpeg",
+        "details": ["Double Compartment","Lightweight & Comfortable","Durable Fabric","Trendy Design"]
+    },
+        {
+        "id": "prod-21",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530,
+        "category": "Backpack",
+        "image_url": "/media/21.jpeg",
+        "details": ["2 Compartments","3 out side Pockets"]
+    },
+
+      {
+        "id": "prod-22",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530,
+        "category": "Backpack",
+        "image_url": "/media/22.jpeg",
+        "details": ["3 Compartments","1 out side Pockets","1 Laptop Pocket"]
+    },
+       {
+        "id": "prod-23",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530,
+        "category": "Backpack",
+        "image_url": "/media/23.jpeg",
+        "details": ["2 Compartments","1 out side Pockets"]
+    },    {
+        "id": "prod-24",
+        "title": "Big BACKPACK",
+        "description": null,
+        "price": 530,
+        "category": "Backpack",
+        "image_url": "/media/24.jpeg",
+        "details": ["3 Compartments","1 out side Pockets","More Space","1 Laptop Pocket Available"]
+    },
+        {
+        "id": "prod-25",
+        "title": "BACKPACK",
+        "description": null,
+        "price": 530,
+        "category": "Backpack",
+        "image_url": "/media/25.jpeg",
+        "details": ["3 Compartments","1 out side Pockets","1 Laptop Pocket"]
+    },
+        {
+        "id": "prod-26",
+        "title": "BACKPACK",
+        "description": null,
+        "price": 530,
+        "category": "Backpack",
+        "image_url": "/media/26.jpeg",
+        "details": ["3 Compartments","1 out side Pockets","1 Laptop Pocket"]
+    },
+         {
+        "id": "prod-27",
+        "title": "CHARLI TYPE BACKPACK",
+        "description": null,
+        "price": 530,
+        "category": "Backpack",
+        "image_url": "/media/27.jpeg",
+        "details": ["2 Compartments","1 out side Pockets"]
     }
+    ,     {
+        "id": "prod-",
+        "title": "",
+        "description": null,
+        "price": 0.00,
+        "category": "",
+        "image_url": "",
+        "details": []
+    },
+         {
+        "id": "prod-",
+        "title": "",
+        "description": null,
+        "price": 0.00,
+        "category": "",
+        "image_url": "",
+        "details": []
+    },
+         {
+        "id": "prod-",
+        "title": "",
+        "description": null,
+        "price": 0.00,
+        "category": "",
+        "image_url": "",
+        "details": []
+    }
+
+
 ]
 
